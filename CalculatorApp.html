@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .btn:active {
+            transform: scale(0.95);
+            transition: transform 0.1s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 flex items-center justify-center min-h-screen">
+
+    <div class="w-full max-w-sm mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-6 border border-gray-200 dark:border-gray-700">
+        
+        <div class="bg-gray-200 dark:bg-gray-700 rounded-lg p-4 mb-6">
+            <input type="text" id="screen" class="w-full bg-transparent text-right text-4xl font-semibold text-gray-800 dark:text-white outline-none" readonly placeholder="0">
+        </div>
+
+        <div class="grid grid-cols-4 gap-4">
+            <button class="btn bg-red-500 hover:bg-red-600 text-white text-2xl font-bold rounded-lg h-16" onclick="clearScreen()">AC</button>
+            <button class="btn bg-gray-200 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500 text-gray-800 dark:text-white text-2xl font-bold rounded-lg h-16" onclick="pressKey('(')">(</button>
+            <button class="btn bg-gray-200 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500 text-gray-800 dark:text-white text-2xl font-bold rounded-lg h-16" onclick="pressKey(')')">)</button>
+            <button class="btn bg-blue-500 hover:bg-blue-600 text-white text-2xl font-bold rounded-lg h-16" onclick="pressKey('/')">÷</button>
+
+            <button class="btn bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-2xl font-bold rounded-lg h-16" onclick="pressKey('7')">7</button>
+            <button class="btn bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-2xl font-bold rounded-lg h-16" onclick="pressKey('8')">8</button>
+            <button class="btn bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-2xl font-bold rounded-lg h-16" onclick="pressKey('9')">9</button>
+            <button class="btn bg-blue-500 hover:bg-blue-600 text-white text-2xl font-bold rounded-lg h-16" onclick="pressKey('*')">×</button>
+
+            <button class="btn bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-2xl font-bold rounded-lg h-16" onclick="pressKey('4')">4</button>
+            <button class="btn bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-2xl font-bold rounded-lg h-16" onclick="pressKey('5')">5</button>
+            <button class="btn bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-2xl font-bold rounded-lg h-16" onclick="pressKey('6')">6</button>
+            <button class="btn bg-blue-500 hover:bg-blue-600 text-white text-2xl font-bold rounded-lg h-16" onclick="pressKey('-')">−</button>
+
+            <button class="btn bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-2xl font-bold rounded-lg h-16" onclick="pressKey('1')">1</button>
+            <button class="btn bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-2xl font-bold rounded-lg h-16" onclick="pressKey('2')">2</button>
+            <button class="btn bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-2xl font-bold rounded-lg h-16" onclick="pressKey('3')">3</button>
+            <button class="btn bg-blue-500 hover:bg-blue-600 text-white text-2xl font-bold rounded-lg h-16" onclick="pressKey('+')">+</button>
+
+            <button class="btn bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-2xl font-bold rounded-lg h-16 col-span-2" onclick="pressKey('0')">0</button>
+            <button class="btn bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-2xl font-bold rounded-lg h-16" onclick="pressKey('.')">.</button>
+            <button class="btn bg-green-500 hover:bg-green-600 text-white text-2xl font-bold rounded-lg h-16" onclick="solve()">=</button>
+        </div>
+    </div>
+
+    <script>
+        const screen = document.getElementById('screen');
+
+        function pressKey(key) {
+            if (screen.value === '0' || screen.value === 'Error') {
+                screen.value = key;
+            } else {
+                screen.value += key;
+            }
+        }
+
+        function clearScreen() {
+            screen.value = '0';
+        }
+
+        function solve() {
+            try {
+                const equation = screen.value;
+                const safeEquation = equation.replace(/[^-()\d/*+.]/g, '');
+                const answer = new Function('return ' + safeEquation)();
+
+                if (!isFinite(answer)) {
+                    screen.value = 'Error';
+                } else {
+                    screen.value = parseFloat(answer.toFixed(10));
+                }
+            } catch (error) {
+                screen.value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
