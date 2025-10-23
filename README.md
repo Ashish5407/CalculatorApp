@@ -1,7 +1,7 @@
-🧮 Modern Calculator
+**🧮 Modern Calculator**
 
 
-📖 Description
+**📖 Description**
 
 A responsive, modern calculator built with HTML, Tailwind CSS, and JavaScript.
 
@@ -10,7 +10,7 @@ It supports all basic arithmetic operations and includes a minimal, elegant dark
 This project demonstrates front-end UI design and basic JavaScript logic handling in a single, self-contained HTML file — no frameworks required.
 
 
-🚀 Features
+**🚀 Features**
 
 ✅ Clean and modern UI using Tailwind CSS
 
