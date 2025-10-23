@@ -19,11 +19,8 @@ This project demonstrates front-end UI design and basic JavaScript logic handlin
 🧩 Technologies Used
 
 HTML5
-
 Tailwind CSS (via CDN)
-
 JavaScript (ES6)
-
 Google Fonts (Inter)
 
 📂 Project Structure
