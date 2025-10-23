@@ -25,7 +25,7 @@ This project demonstrates front-end UI design and basic JavaScript logic handlin
 ✅ Smooth button animations
 
 
-🧩 Technologies Used
+**🧩 Technologies Used**
 
 HTML5
 
@@ -36,7 +36,7 @@ JavaScript (ES6)
 Google Fonts (Inter)
 
 
-📂 Project Structure
+**📂 Project Structure**
 
 calculator/
 │
@@ -46,7 +46,7 @@ calculator/
 └── README.md       # Project documentation
 
 
-🧠 How It Works
+**🧠 How It Works**
 
 The calculator listens for button clicks.
 
@@ -57,7 +57,7 @@ When = is pressed, the expression is safely evaluated using JavaScript’s Funct
 AC resets the screento zero.
 
 
-▶️ How to Run
+**▶️ How to Run**
 
 Download or clone this repository:
 
@@ -68,7 +68,7 @@ Open index.html in any web browser.
 
 That’s it — no build step or dependencies needed.
 
-💡 Example Usage
+**💡 Example Usage**
 
 Click on numbers and operations to form an equation
 
@@ -80,7 +80,7 @@ Press = to get the result
 
 Use AC to clear and start a new calculation.
 
-🧰 Future Enhancements
+**🧰 Future Enhancements**
 
 Add keyboard input support
 
